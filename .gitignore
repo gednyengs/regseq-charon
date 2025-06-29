@@ -1,0 +1,42 @@
+# === Rust & Cargo ===
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# === IDEs and Editors ===
+# VSCode
+.vscode/
+*.code-workspace
+
+# IntelliJ / RustRover
+.idea/
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Vim
+*.swp
+*.swo
+*.un~
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Logs and Temp Files ===
+*.log
+*.tmp
+*.bak
+
+# === Git-specific ===
+.gitmodules
+
+# === Claude ===
+.claude

@@ -1,8 +1,8 @@
-use crate::translate::translate_predicates::PredicateLocation;
+use super::translate_predicates::PredicateLocation;
 
-use super::charon_lib::ast::*;
-use super::charon_lib::common::hash_by_addr::HashByAddr;
-use super::charon_lib::errors::raise_error;
+use charon_lib::ast::*;
+use charon_lib::common::hash_by_addr::HashByAddr;
+use charon_lib::errors::raise_error;
 use super::translate_ctx::ItemTransCtx;
 use hax_frontend_exporter as hax;
 use std::collections::HashMap;

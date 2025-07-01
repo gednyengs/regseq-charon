@@ -3,6 +3,8 @@
 //! us to handle, and easier to maintain - rustc's representation can evolve
 //! independently.
 
+use charon_lib::trace;
+
 use std::collections::HashMap;
 use std::collections::VecDeque;
 use std::mem;
@@ -10,12 +12,12 @@ use std::ops::Deref;
 use std::ops::DerefMut;
 use std::panic;
 
-use super::charon_lib::ast::*;
-use super::charon_lib::formatter::FmtCtx;
-use super::charon_lib::formatter::IntoFormatter;
-use super::charon_lib::ids::Vector;
-use super::charon_lib::pretty::fmt_with_ctx::FmtWithCtx;
-use super::charon_lib::ullbc_ast::*;
+use charon_lib::ast::*;
+use charon_lib::formatter::FmtCtx;
+use charon_lib::formatter::IntoFormatter;
+use charon_lib::ids::Vector;
+use charon_lib::pretty::fmt_with_ctx::FmtWithCtx;
+use charon_lib::ullbc_ast::*;
 use super::translate_crate::TransItemSource;
 use super::translate_ctx::*;
 use hax_frontend_exporter as hax;

@@ -1,0 +1,45 @@
+[package]
+name = "charon_lib"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+# Core dependencies for AST and data structures
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_stacker = { workspace = true }
+serde-map-to-array = { workspace = true }
+index_vec = { workspace = true }
+indexmap = { workspace = true }
+derive_generic_visitor = { workspace = true }
+itertools = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+nom = { workspace = true }
+nom-supreme = { workspace = true }
+num-bigint = { workspace = true }
+num-rational = { workspace = true }
+petgraph = { workspace = true }
+stacker = { workspace = true }
+take_mut = { workspace = true }
+either = { workspace = true }
+macros = { workspace = true }
+
+# For pretty printing and errors
+anyhow = { workspace = true }
+colored = { workspace = true }
+annotate-snippets = { workspace = true }
+anstream = { workspace = true }
+
+# For CLI and logging
+clap = { workspace = true }
+indoc = { workspace = true }
+env_logger = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tracing-tree = { workspace = true }
+
+[dev-dependencies]
+indoc = { workspace = true }

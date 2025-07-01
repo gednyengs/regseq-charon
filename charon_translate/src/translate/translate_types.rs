@@ -1,7 +1,8 @@
-use super::charon_lib::ast::*;
-use super::charon_lib::builtins;
-use super::charon_lib::common::hash_by_addr::HashByAddr;
-use super::charon_lib::ids::Vector;
+use charon_lib::trace;
+use charon_lib::ast::*;
+use charon_lib::builtins;
+use charon_lib::common::hash_by_addr::HashByAddr;
+use charon_lib::ids::Vector;
 use super::translate_ctx::*;
 use core::convert::*;
 use hax::HasParamEnv;
@@ -91,10 +92,10 @@ impl<'tcx, 'ctx> ItemTransCtx<'tcx, 'ctx> {
             hax::TyKind::Float(float_ty) => {
                 use hax::FloatTy;
                 TyKind::Literal(LiteralTy::Float(match float_ty {
-                    FloatTy::F16 => super::charon_lib::ast::types::FloatTy::F16,
-                    FloatTy::F32 => super::charon_lib::ast::types::FloatTy::F32,
-                    FloatTy::F64 => super::charon_lib::ast::types::FloatTy::F64,
-                    FloatTy::F128 => super::charon_lib::ast::types::FloatTy::F128,
+                    FloatTy::F16 => charon_lib::ast::types::FloatTy::F16,
+                    FloatTy::F32 => charon_lib::ast::types::FloatTy::F32,
+                    FloatTy::F64 => charon_lib::ast::types::FloatTy::F64,
+                    FloatTy::F128 => charon_lib::ast::types::FloatTy::F128,
                 }))
             }
             hax::TyKind::Never => TyKind::Never,

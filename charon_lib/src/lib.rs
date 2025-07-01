@@ -1,18 +1,11 @@
-//! This library contains utilities to extract the MIR from a Rust project,
-//! by compiling it to an easy-to-use AST called LLBC (Low-Level Borrow Calculus).
-//! This AST is serialized into JSON files.
-//!
-//! A good entry point to explore the project is [`driver`](../charon_driver/index.html),
-//! and in particular [`driver::CharonCallbacks`](../charon_driver/driver/struct.CharonCallbacks.html),
-//! which implements the callback which we provide to Rustc.
-//!
-//! The ASTs are in [`ullbc_ast`] (Unstructured LLBC - basically
-//! a cleaned-up version of MIR) and [`llbc_ast`] (same as ULLBC, but
-//! we reconstructed the control-flow to have `if ... then ... else ...`,
-//! loops, etc. instead of `GOTO`s).
+//! Core Charon library containing AST definitions and utilities
+//! 
+//! This library provides the core data structures for the Charon project,
+//! including the AST definitions for ULLBC and LLBC, without any rustc
+//! dependencies. This allows it to be used in contexts where rustc_private
+//! is not available.
 
-#![feature(rustc_private)]
-#![recursion_limit = "256"] // For rustdoc: prevents overflows
+#![recursion_limit = "256"]
 #![feature(assert_matches)]
 #![feature(box_patterns)]
 #![feature(deref_pure_trait)]
@@ -28,20 +21,6 @@
 #![feature(register_tool)]
 #![register_tool(charon)]
 
-extern crate rustc_abi;
-extern crate rustc_ast;
-extern crate rustc_ast_pretty;
-extern crate rustc_driver;
-extern crate rustc_error_messages;
-extern crate rustc_errors;
-extern crate rustc_hir;
-extern crate rustc_index;
-extern crate rustc_interface;
-extern crate rustc_middle;
-extern crate rustc_session;
-extern crate rustc_span;
-extern crate rustc_target;
-
 #[macro_use]
 pub mod ids;
 #[macro_use]
@@ -54,8 +33,6 @@ pub mod name_matcher;
 pub mod options;
 pub mod pretty;
 pub mod transform;
-#[macro_use]
-pub mod translate;
 
 // Re-export all the ast modules so we can keep the old import structure.
 pub use ast::{builtins, expressions, gast, llbc_ast, meta, names, types, ullbc_ast, values};
@@ -63,7 +40,7 @@ pub use pretty::formatter;
 pub use transform::{graphs, reorder_decls, ullbc_to_llbc};
 
 /// The version of the crate, as defined in `Cargo.toml`.
-const VERSION: &str = env!("CARGO_PKG_VERSION");
+pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /// Read a `.llbc` file.
 pub fn deserialize_llbc(path: &std::path::Path) -> anyhow::Result<ast::TranslatedCrate> {

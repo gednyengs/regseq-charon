@@ -12,7 +12,7 @@ pub mod translate_meta;
 pub mod translate_predicates;
 pub mod translate_types;
 
-pub(crate) use crate as charon_lib;
+// charon_lib is now an external dependency
 
 use charon_lib::{
     options::CliOpts,

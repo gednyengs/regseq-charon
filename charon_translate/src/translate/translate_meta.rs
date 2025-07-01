@@ -1,6 +1,8 @@
 //! Translate information about items: name, attributes, etc.
-use super::charon_lib::ast::*;
-use super::charon_lib::errors::{error_assert, raise_error, register_error};
+
+use charon_lib::trace;
+use charon_lib::ast::*;
+use charon_lib::errors::{error_assert, raise_error, register_error};
 use super::translate_crate::TransItemSource;
 use super::translate_ctx::{ItemTransCtx, TranslateCtx};
 use hax_frontend_exporter::{self as hax, DefPathItem};

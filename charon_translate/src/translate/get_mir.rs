@@ -9,9 +9,9 @@ use rustc_hir as hir;
 use rustc_middle::mir::Body;
 use rustc_middle::ty::TyCtxt;
 
-use super::charon_lib::ast::*;
-use super::charon_lib::errors::raise_error;
-use super::charon_lib::options::MirLevel;
+use charon_lib::ast::*;
+use charon_lib::errors::raise_error;
+use charon_lib::options::MirLevel;
 
 use super::translate_ctx::TranslateCtx;
 

@@ -1,0 +1,80 @@
+[package]
+name = "charon_translate"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+# The core library with AST definitions
+charon_lib = { workspace = true }
+
+# Dependencies for translation
+hax-frontend-exporter = { workspace = true }
+anstream = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+convert_case = { workspace = true }
+env_logger = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tracing-tree = { workspace = true }
+which = { workspace = true }
+rustc_version = { workspace = true }
+toml = { workspace = true }
+strip-ansi-escapes = { workspace = true }
+
+# Re-export some core dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+itertools = { workspace = true }
+indexmap = { workspace = true }
+macros = { workspace = true }
+index_vec = { workspace = true }
+either = { workspace = true }
+derive_generic_visitor = { workspace = true }
+colored = { workspace = true }
+
+[dev-dependencies]
+assert_cmd = { workspace = true }
+ignore = "0.4"
+indoc = { workspace = true }
+libtest-mimic = "0.8"
+snapbox = "0.6"
+tempfile = "3"
+walkdir = "2.3.2"
+
+[features]
+default = []
+# This feature enables the `popular-crates` test
+popular-crates-test = [
+    "dep:crates_io_api",
+    "dep:flate2", 
+    "dep:reqwest",
+    "dep:tar",
+    "dep:wait-timeout",
+]
+
+[dependencies.crates_io_api]
+workspace = true
+optional = true
+
+[dependencies.flate2]
+workspace = true
+optional = true
+
+[dependencies.reqwest]
+workspace = true
+optional = true
+
+[dependencies.tar]
+workspace = true
+optional = true
+
+[dependencies.wait-timeout]
+workspace = true
+optional = true
+
+[package.metadata.rust-analyzer]
+rustc_private = true

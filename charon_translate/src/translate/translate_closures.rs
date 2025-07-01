@@ -38,12 +38,13 @@
 //! }
 //! ```
 
+use charon_lib::trace;
 use std::mem;
 
-use crate::translate::translate_bodies::BodyTransCtx;
+use super::translate_bodies::BodyTransCtx;
 
-use super::charon_lib::ids::Vector;
-use super::charon_lib::ullbc_ast::*;
+use charon_lib::ids::Vector;
+use charon_lib::ullbc_ast::*;
 use super::translate_ctx::*;
 use hax_frontend_exporter as hax;
 use itertools::Itertools;

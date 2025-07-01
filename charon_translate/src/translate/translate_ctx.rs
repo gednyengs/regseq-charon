@@ -1,8 +1,8 @@
 //! The translation contexts.
-use super::charon_lib::ast::*;
-use super::charon_lib::formatter::{FmtCtx, IntoFormatter};
-use super::charon_lib::ids::Vector;
-use super::charon_lib::options::TranslateOptions;
+use charon_lib::ast::*;
+use charon_lib::formatter::{FmtCtx, IntoFormatter};
+use charon_lib::ids::Vector;
+use charon_lib::options::TranslateOptions;
 use super::translate_crate::TransItemSource;
 use super::translate_generics::BindingLevel;
 use hax_frontend_exporter::{self as hax, DefId, SInto};
@@ -16,7 +16,7 @@ use std::sync::Arc;
 use std::{fmt, mem};
 
 // Re-export to avoid having to fix imports.
-pub(crate) use super::charon_lib::errors::{
+pub(crate) use charon_lib::errors::{
     error_assert, raise_error, register_error, DepSource, ErrorCtx, Level,
 };
 

@@ -1,5 +1,8 @@
-[package]
-name = "regseq-charon"
+[workspace]
+members = ["charon_lib", "charon_translate", "macros"]
+resolver = "2"
+
+[workspace.package]
 version = "0.1.107"
 authors = [
     "Son Ho <hosonmarc@gmail.com>",
@@ -9,11 +12,8 @@ authors = [
 edition = "2021"
 license = "Apache-2.0"
 
-[lib]
-name = "charon_lib"
-path = "src/lib.rs"
-
-[dependencies]
+[workspace.dependencies]
+# External dependencies
 annotate-snippets = { git = "https://github.com/rust-lang/annotate-snippets-rs", rev = "a78e165de1e2bc65bf261f5770bdcfa172a9654a" }
 anstream = "0.6.18"
 anyhow = "1.0.81"
@@ -21,11 +21,9 @@ assert_cmd = "2.0"
 clap = { version = "4.0", features = ["derive", "env"] }
 colored = "2.0.4"
 convert_case = "0.6.0"
-crates_io_api = { version = "0.11.0", optional = true }
 derive_generic_visitor = "0.1.0"
 either = "1.15.0"
 env_logger = { version = "0.11", features = ["color"] }
-flate2 = { version = "1.0.34", optional = true }
 indexmap = { version = "2.7.1", features = ["serde"] }
 index_vec = { version = "0.1.3", features = ["serde"] }
 indoc = "2"
@@ -37,7 +35,6 @@ nom-supreme = "0.8.0"
 num-bigint = "0.4.6"
 num-rational = "0.4"
 petgraph = "0.6.2"
-reqwest = { version = "0.12.8", optional = true }
 rustc_version = "0.4"
 serde_json = { version = "1.0.91", features = ["unbounded_depth"] }
 serde-map-to-array = { version = "1.1.1", features = ["std"] }
@@ -46,45 +43,22 @@ serde = { version = "1.0.152", features = ["derive", "rc"] }
 stacker = "0.1"
 strip-ansi-escapes = "0.2.1"
 take_mut = "0.2.2"
-tar = { version = "0.4.42", optional = true }
 toml = { version = "0.8", features = ["parse"] }
-tracing-subscriber = { version = "0.3", features = [
-    "env-filter",
-    "std",
-    "fmt",
-] }
-tracing-tree = { git = "https://github.com/Nadrieril/tracing-tree", features = [
-    "time",
-] } # Fork with improved formating and timing info.
+tracing-subscriber = { version = "0.3", features = ["env-filter", "std", "fmt"] }
+tracing-tree = { git = "https://github.com/Nadrieril/tracing-tree", features = ["time"] }
 tracing = { version = "0.1", features = ["max_level_trace"] }
-wait-timeout = { version = "0.2.0", optional = true }
 which = "7.0"
 
-hax-frontend-exporter = { git = "https://github.com/cryspen/hax", rev = "75184e16ef59777bd103c5b118a074c4a3c32c9a", optional = true }
+# Internal dependencies
+charon_lib = { path = "./charon_lib" }
 macros = { path = "./macros" }
 
-[features]
-default = ["rustc"]
-# This feature enables the translation of rust code into charon's format. When
-# disabled, the binaries won't build but the main crate (with the ast
-# definitions) still does. It is enabled by default.
-rustc = ["dep:hax-frontend-exporter"]
-# This feature enables the `popular-crates` test which runs Charon on the most downloaded crates from crates.io.
-popular-crates-test = [
-    "dep:crates_io_api",
-    "dep:flate2",
-    "dep:reqwest",
-    "dep:tar",
-    "dep:wait-timeout",
-]
+# Optional dependencies for translation
+hax-frontend-exporter = { git = "https://github.com/cryspen/hax", rev = "75184e16ef59777bd103c5b118a074c4a3c32c9a" }
 
-[dev-dependencies]
-ignore = "0.4"
-indoc = "2"
-libtest-mimic = "0.8"
-snapbox = "0.6"
-tempfile = "3"
-walkdir = "2.3.2"
-
-[package.metadata.rust-analyzer]
-rustc_private = true
+# Test dependencies
+crates_io_api = { version = "0.11.0" }
+flate2 = { version = "1.0.34" }
+reqwest = { version = "0.12.8" }
+tar = { version = "0.4.42" }
+wait-timeout = { version = "0.2.0" }

@@ -27,7 +27,7 @@ pub use register_error;
 #[macro_export]
 macro_rules! raise_error {
     ($($tokens:tt)*) => {{
-        return Err(crate::register_error!($($tokens)*));
+        return Err($crate::register_error!($($tokens)*));
     }};
 }
 pub use raise_error;

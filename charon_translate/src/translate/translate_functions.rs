@@ -3,13 +3,15 @@
 //! us to handle, and easier to maintain - rustc's representation can evolve
 //! independently.
 
+use charon_lib::trace;
+
 use std::panic;
 
-use super::charon_lib::common::*;
-use super::charon_lib::formatter::IntoFormatter;
-use super::charon_lib::ids::Vector;
-use super::charon_lib::pretty::FmtWithCtx;
-use super::charon_lib::ullbc_ast::*;
+use charon_lib::common::*;
+use charon_lib::formatter::IntoFormatter;
+use charon_lib::ids::Vector;
+use charon_lib::pretty::FmtWithCtx;
+use charon_lib::ullbc_ast::*;
 use super::translate_ctx::*;
 use hax_frontend_exporter as hax;
 use itertools::Itertools;

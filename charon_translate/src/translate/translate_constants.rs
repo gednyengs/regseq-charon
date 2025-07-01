@@ -1,5 +1,5 @@
 //! Functions to translate constants to LLBC.
-use super::charon_lib::ast::*;
+use charon_lib::ast::*;
 use super::translate_ctx::*;
 use hax_frontend_exporter as hax;
 

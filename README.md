@@ -44,13 +44,21 @@ Translation layer that interfaces with the Rust compiler:
 For crates that only need the AST definitions:
 ```toml
 [dependencies]
+# Using a local path
 charon_lib = { path = "path/to/regseq-charon/charon_lib" }
+
+# Or using Git
+charon_lib = { git = "https://github.com/gednyengs/regseq-charon.git" }
 ```
 
 For crates that need translation capabilities:
 ```toml
 [dependencies]
+# Using a local path
 charon_translate = { path = "path/to/regseq-charon/charon_translate" }
+
+# Or using Git
+charon_translate = { git = "https://github.com/gednyengs/regseq-charon.git" }
 ```
 
 Note: Dependencies on `charon_translate` will require `#![feature(rustc_private)]` in your crate.
